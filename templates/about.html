@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>About</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+      <a class="navbar-brand" href="{{ url_for('index') }}">Flack</a>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-alt-markup">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbar-alt-markup">
+        <div class="navbar-nav">
+          <a class="nav-link" href="{{ url_for('about') }}">About</a>
+        </div>
+      </div>
+    </nav>
+    <div style="margin: 10px;">
+      <h2>About</h2>
+      <p>Flack is a real-time online messaging website where users can create and join different rooms.</p>
+      <h2>Attributions</h2>
+      <a href="https://fontawesome.com/icons/plus-circle?style=solid">"plus-circle"</a> by <a href="https://fontawesome.com/">Font Awesome</a> is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+    </div>
+  </body>
+</html>

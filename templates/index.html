@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Flack</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <style>
+      #messages {
+        height: calc(100vh - 125px);
+        overflow: auto;
+        margin-bottom: 10px;
+      }
+      #enter-message, #enter-displayname, #add-btn {
+        margin-right: 5px;
+      }
+      #message-form {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+      <a class="navbar-brand" href="{{ url_for('index') }}">Flack</a>
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-alt-markup">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbar-alt-markup">
+        <div class="navbar-nav">
+          <a class="nav-link" href="{{ url_for('about') }}">About</a>
+        </div>
+      </div>
+      <div id="room-selector" class="btn-group">
+        <input type="button" class="btn btn-primary" id="change-room-btn" value="Change Room">
+        <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"></button>
+        <div id="room-dropdown" class="dropdown-menu">
+          <h1 class="dropdown-header">Go to room</h1>
+        </div>
+      </div>
+    </nav>
+    <div id="remaining-body" style="margin-left: 10px; margin-right: 10px; margin-top: 10px;">
+      <div id="displayname-dialog" class="modal hide fade" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1>Welcome to Flack!</h1>
+            </div>
+            <div class="modal-body">
+              <p>Enter a display name to begin.</p>
+              <form id="displayname-modal-form">
+                <div class="input-group">
+                  <input type="text" id="enter-displayname" placeholder="Enter a display name" class="form-control">
+                  <input type="submit" id="enter-displayname-btn" class="btn btn-primary">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="change-room-dialog" class="modal hide fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1>Change Room</h1>
+            </div>
+            <div class="modal-body">
+              <p>Enter a room name. If the room does not exist, it will be created.</p>
+              <form id="change-room-modal-form">
+                <div class="input-group">
+                  <input type="text" id="enter-roomname" placeholder="Enter a room name" class="form-control">
+                  <input type="submit" id="enter-roomname-btn" class="btn btn-primary">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="messages">
+
+      </div>
+      <form id="message-form">
+        <div class="input-group">
+          <input type="text" class="form-control" id="enter-message" placeholder="Enter message" autocomplete="off">
+          <button type="button" class="btn btn-primary" id="add-btn" data-toggle="popover" data-html="true">
+            <i class="fas fa-plus-circle"></i>
+          </button>
+          <input type="submit" class="btn btn-primary" id="send-btn" value="Send">
+        </div>
+      </form>
+      <div style="display: none;" id="add-popover-content">
+        <form id="image-form">Add image by URL: <input type="text" class="form-control image-form" id="image-url" placeholder="Enter URL" autocomplete="off"></form>
+        <p>Attach file: </p>
+      </div>
+      <div id="messages-dictionary" style="display: none;">
+        {{ messages }}
+      </div>
+    </div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.slim.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='index.js') }}"></script>
+  </body>
+</html>

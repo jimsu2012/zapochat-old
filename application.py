@@ -52,4 +52,4 @@ def send_image(data):
     emit("announce message", {"displayname": data["displayname"], "message": image_html, "timestamp": data["timestamp"]}, room=data["roomname"])
 
 if __name__ == "__main__":
-    socketio.run(app, debug=True)
+    socketio.run(app)

@@ -23,6 +23,10 @@ def index():
 def about():
     return render_template("about.html")
 
+@app.route("/google4769157abdb1a45a")
+def html_verification():
+    return render_template("google4769157abdb1a45a.html")
+
 @socketio.on("join room")
 def join(data):
     displayname = data["displayname"]

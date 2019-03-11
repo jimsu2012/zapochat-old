@@ -23,9 +23,9 @@ def index():
 def about():
     return render_template("about.html")
 
-@app.route("/google4769157abdb1a45a")
+@app.route("/google4769157abdb1a45a.html")
 def html_verification():
-    return "google-site-verification: google4769157abdb1a45a.html"
+    return render_template("google4769157abdb1a45a.html")
 
 @socketio.on("join room")
 def join(data):

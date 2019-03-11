@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
             scrollToBottom();
         } else {
             document.querySelector('#messages').innerHTML += '<img src="/static/zapochat_content.png"></img>';
-            document.querySelector('#messages').innerHTML += '<div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; justify-content: center; align-items: center;"><h2>Test text</h2></div>';
+            document.querySelector('#messages').innerHTML += '<div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; justify-content: center; align-items: center;"><h2>Enter a display name to begin!</h2></div>';
         }
 
         for (var i = 0; i < Object.keys(messages).length; i++) {

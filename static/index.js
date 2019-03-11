@@ -35,6 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
         return dateAndTime;
     }
 
+    function scrollToBottom() {
+        const messages = document.querySelector('#messages');
+        messages.scrollTop = messages.scrollHeight;
+    }
+
     var messages = JSON.parse(document.querySelector('#messages-dictionary').innerHTML);
     var displayname;
     var roomname;
@@ -59,6 +64,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (displayname != '') {
             localStorage.setItem('displayname', displayname);
             $('#displayname-dialog').modal('hide');
+
+            document.querySelector('#messages').innerHTML = '';
+            appendPreviousMessages();
+
+            scrollToBottom();
+
             socket.emit('join room', {roomname: roomname, displayname: displayname});
             console.log(`joined room with roomname ${roomname} and displayname ${displayname}`);
         }
@@ -84,10 +95,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (displayname != null) {
             socket.emit('join room', {roomname: roomname, displayname: displayname});
             console.log(`joined room with roomname ${roomname} and displayname ${displayname}`);
-            socket.emit('wait until joined initial room');
-        }
 
-        appendPreviousMessages();
+            appendPreviousMessages();
+
+            scrollToBottom();
+        } else {
+            document.querySelector('#messages').innerHTML += '<img src="/static/zapochat_content.png"></img>';
+            document.querySelector('#messages').innerHTML += '<div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; display: flex; justify-content: center; align-items: center;"><h2>Enter a display name to start!</h2></div>';
+        }
 
         for (var i = 0; i < Object.keys(messages).length; i++) {
             console.log('messages keys [i]: ' + Object.keys(messages)[i]);
@@ -103,6 +118,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.querySelector('#change-room-btn').value = `Leave Room ${roomname}`;
                 document.querySelector('#messages').innerHTML = '';
                 appendPreviousMessages();
+
+                scrollToBottom();
 
                 socket.emit('join room', {roomname: roomname, displayname: displayname});
                 console.log(`joined room from change dropdown with roomname ${roomname} and displayname ${displayname}`);
@@ -129,6 +146,8 @@ document.addEventListener('DOMContentLoaded', () => {
             document.querySelector('#messages').innerHTML = '';
             appendPreviousMessages();
 
+            scrollToBottom();
+
             socket.emit('join room', {roomname: roomname, displayname: displayname});
             console.log(`joined room from change room modal with roomname ${roomname} and displayname ${displayname}`);
 
@@ -148,10 +167,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     socket.on('announce join', data => {
         document.querySelector('#messages').innerHTML += '<i>' + data.displayname + ' has joined the room' + '</i>' + '<br>';
+
+        scrollToBottom();
     });
 
     socket.on('announce message', data => {
         document.querySelector('#messages').innerHTML += `<span class="badge badge-info">${data.timestamp}</span> <b>${data.displayname}:</b> ${data.message}<br>`;
+
+        scrollToBottom();
+        //messages.animate([{messages.scrollTop: messages.scrollTop}, {messages.scrollTop: messages.scrollHeight}], 1000);
     });
 
     socket.on('update messages', data => {

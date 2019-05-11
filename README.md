@@ -2,7 +2,7 @@
 
 A real time chat application made with Python (Flask) and JavaScript
 
-![alt text](https://github.com/jimsu2012/zapochat/blob/master/static/zapochat_welcome.jpg "Zapochat Welcome")[]()
+![Zapochat Welcome](https://github.com/jimsu2012/zapochat/blob/master/static/zapochat_welcome.jpg)[]()
 
 ## What is it?
 

@@ -1,6 +1,6 @@
 # Zapochat
 
-A Real Time Chat Application made with Python (Flask) and JavaScript
+A real time chat application made with Python (Flask) and JavaScript
 
 ## What is it?
 

@@ -2,7 +2,7 @@
 
 A Real Time Chat Application made with Python (Flask) and JavaScript
 
-Deployed at [zapochat.herokuapp.com]
+Deployed at <zapochat.herokuapp.com>
 
 Please note that the chat app will take up to ten seconds to load because it runs on Heroku's free plan, which sleeps if a site is inactive for over 30 minutes.
 

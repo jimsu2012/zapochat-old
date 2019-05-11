@@ -2,9 +2,13 @@
 
 A Real Time Chat Application made with Python (Flask) and JavaScript
 
-Deployed at [zapochat.herokuapp.com](https://zapochat.herokuapp.com).
+## Where is it?
+
+Zapochat is deployed at [zapochat.herokuapp.com](https://zapochat.herokuapp.com).
 
 Please note that the chat app will take up to ten seconds to load because it runs on Heroku's free plan, which sleeps if a site is inactive for over 30 minutes.
+
+## What is it?
 
 Zapochat allows users to send text messages and images to each other in real time. When a user visits Zapochat, a dialog box pops up asking for the user's name, which is stored in local memory so the user does not have to reinput it the next time.
 

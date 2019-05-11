@@ -2,6 +2,8 @@
 
 A real time chat application made with Python (Flask) and JavaScript
 
+![alt text](https://github.com/jimsu2012/zapochat/blob/master/static/zapochat_welcome.jpg "Zapochat Welcome")
+
 ## What is it?
 
 Zapochat allows users to send text messages and images to each other in real time. When a user visits Zapochat, a dialog box pops up asking for the user's name, which is stored in local memory so the user does not have to reinput it the next time.

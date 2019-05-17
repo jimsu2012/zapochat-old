@@ -16,4 +16,4 @@ Users can send messages in rooms. When a user sends a message, it is displayed w
 
 Zapochat is deployed at [zapochat.herokuapp.com](https://zapochat.herokuapp.com).
 
-Please note that the chat app will take up to ten seconds to load because it runs on Heroku's free plan, which sleeps if a site is inactive for over 30 minutes.
+Please note that the chat app may take up to ten seconds to load because it runs on Heroku's free plan, which sleeps if a site is inactive for over 30 minutes.
